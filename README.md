@@ -4,7 +4,8 @@
 на iPhone, Android и компьютерах.
 
 Страница игры: **https://vetcat.github.io/PixelLordsGame/**.
-На начальной странице пока размещено сообщение об отсутствии игровой сборки.
+На телефоне открыть ссылку в браузере и повернуть устройство в landscape.
+Для локальной игровой сессии выбрать **Play Local → Start Game** в панели Quantum.
 
 ## Публикация
 
@@ -12,11 +13,18 @@ GitHub Pages публикует корень ветки `main` после push. 
 включает раздачу готовых файлов без обработки Jekyll.
 
 1. Собрать платформу **Web** в Unity из проекта PixelLords. Каталог результата
-   держать вне исходного Unity-проекта, например в `~/Desktop/PixelLordsWeb/`.
+   держать вне исходного Unity-проекта, например в `~/Desktop/PixelLordsWebRelease/`.
+   Сцена тестового экспорта — `Assets/QuantumUser/Scenes/MetaGameScene.unity`.
+   Для Pages использовать **Brotli + Decompression Fallback**, а для оптимизации
+   кода **Disk Size with LTO**. В исходном проекте должен быть установлен
+   **`com.unity.sharp-zip-lib@1.4.2`**, который подключает существующий Quantum SDK.
+   Проверить запуск сессии и движение в браузере перед публикацией.
 2. Заменить в этом репозитории экспортированный `index.html` и каталоги `Build/`,
    `TemplateData/`, а также `StreamingAssets/`, если он есть в результате сборки.
-   Сохранить `.git/`, `.gitignore`, `.nojekyll` и этот README. Каталоги предыдущей
-   сборки заменять целиком, чтобы старые файлы не накапливались.
+   Обновить `build-info.json` с идентификатором сборки, настройками и SHA-256
+   экспортированных файлов. Сохранить `.git/`, `.gitignore`, `.nojekyll` и этот
+   README. Каталоги предыдущей сборки заменять целиком, чтобы старые файлы
+   не накапливались.
 3. Перед коммитом проверить `git status --short` и список файлов: здесь должны
    находиться файлы веб-сборки и документация публикации.
 4. Опубликовать обновление:
@@ -52,6 +60,20 @@ WebSockets. GitHub Pages раздаёт файлы игры, а игровой �
 `Content-Encoding`, использовать Decompression Fallback. Проверка gzip для
 AsteroidsBuild относится к файлам без предварительного сжатия Unity и сама по
 себе не подтверждает корректность отдачи файлов `.gz` или `.br` в другой сборке.
+
+Текущая схема использует Brotli fallback с файлами **`.unityweb`**: распаковка
+встроена в Unity loader и не требует специальных заголовков Pages. При смене
+сборки проверить загрузку фактически опубликованных файлов по HTTPS.
+
+У Quantum есть [описанная проблема LLVM/LTO со стандартным .NET-сжатием](https://doc.photonengine.com/quantum/v3/manual/webgl).
+В исходном проекте установлен официальный Unity SharpZipLib; SDK автоматически
+включает `CompressionSharpZipLib` через version define. Версии Unity и Quantum
+брать из исходного проекта. Настройки графики для этой публикации сохранены.
+Code Optimization хранится в `Library/`, поэтому на другой машине или в CI
+нужно явно задавать `DiskSizeLTO`.
+
+Подробные команды и результаты находятся в Unity-репозитории:
+`docs/tooling/webgl-builds.md`. Данные конкретного экспорта — в `build-info.json`.
 
 Документация: [Unity Web deployment](https://docs.unity3d.com/6000.6/Documentation/Manual/webgl-deploying.html),
 [Quantum Web](https://doc.photonengine.com/quantum/v3/manual/webgl).
