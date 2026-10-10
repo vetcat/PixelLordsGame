@@ -1,11 +1,13 @@
 {
-  "buildId": "build_11097561a196",
-  "preparedAtUtc": "2026-10-10T13:11:04.974673+00:00",
+  "buildId": "build_5a4bd21de936",
+  "preparedAtUtc": "2026-10-10T13:43:42.373491+00:00",
   "unityVersion": "6000.6.4f1",
   "sourceCommit": "f77f34ac9779518ad75c1897843fc363c49d9096",
   "sourceChanges": [
     "Enable WebGL decompression fallback",
-    "Add com.unity.sharp-zip-lib@1.4.2"
+    "Add com.unity.sharp-zip-lib@1.4.2",
+    "MobileInputWindow layer -1 below Quantum menu",
+    "MetaGameScene Start Game row height 132 and caption 48"
   ],
   "scene": "Assets/QuantumUser/Scenes/MetaGameScene.unity",
   "settings": {
@@ -17,36 +19,44 @@
     "wasm2023": false,
     "developmentBuild": false
   },
-  "totalSizeBytes": 19685544,
-  "buildTimeMs": 348725,
+  "totalSizeBytes": 19683464,
+  "buildTimeMs": 99669,
   "totalErrors": 0,
-  "totalWarnings": 18,
+  "totalWarnings": 2,
   "validation": {
     "localChrome": {
       "offlineSession": "passed",
       "keyboardMovement": "passed",
       "browserErrors": 0
     },
-    "gzipCodecCompatibility": "DotNet <-> SharpZip, 0/1/1024/65536 bytes passed"
+    "gzipCodecCompatibility": "DotNet <-> SharpZip, 0/1/1024/65536 bytes passed",
+    "mobileChromiumEmulation": {
+      "viewport": "844x390 landscape",
+      "touchStartGame": "passed",
+      "offlineSession": "passed",
+      "joystickMovement": "passed",
+      "browserErrors": 0,
+      "realIPhoneSafari": "not tested"
+    }
   },
   "files": [
     {
-      "path": "Build/PixelLordsWebRelease.data.unityweb",
-      "bytes": 9549782,
-      "sha256": "d9395712b7e9af3c3d72d1649a93b11574d7c86578aa9c1d75f285a6a6357bc2"
+      "path": "Build/PixelLordsWebMobileRelease.data.unityweb",
+      "bytes": 9547678,
+      "sha256": "f0fc74e0c17949b95daf940837c04cacc18a14fd9de47fca3a2e2a55bab42306"
     },
     {
-      "path": "Build/PixelLordsWebRelease.framework.js.unityweb",
+      "path": "Build/PixelLordsWebMobileRelease.framework.js.unityweb",
       "bytes": 81283,
       "sha256": "1790896d612d25310944f8ab3386e5f44f814f7389fefd1cefe04c1281f51148"
     },
     {
-      "path": "Build/PixelLordsWebRelease.loader.js",
+      "path": "Build/PixelLordsWebMobileRelease.loader.js",
       "bytes": 118567,
-      "sha256": "5ad5c732485c4983073070ca01dacbf315b6071e1b851bf23b7437683dce97ce"
+      "sha256": "c5132dcac41ff405a12fa436c30ab1dd5903e8aba16ab03854c0edbec56990bd"
     },
     {
-      "path": "Build/PixelLordsWebRelease.wasm.unityweb",
+      "path": "Build/PixelLordsWebMobileRelease.wasm.unityweb",
       "bytes": 9913333,
       "sha256": "6ddb654d0309d332700efb034d0030ca899871f2cede7117373260170cccfcf0"
     },
@@ -132,8 +142,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 6488,
-      "sha256": "8c4ac3d2f2b5f4e33f70e212c9a3ced2864f01a05a8d2c1325987a99ef8e8504"
+      "bytes": 6512,
+      "sha256": "cf76b1e77a9fcde2e92b60fc3ef11ad60840e52810b3e6eba91f3db0b49891c7"
     }
   ]
 }
